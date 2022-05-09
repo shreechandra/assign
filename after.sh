@@ -20,7 +20,7 @@ After=network.target
 [Service]
 User=ubuntu
 Group=www-data
-WorkingDirectory=/home/ubuntu/
+WorkingDirectory=/home/ubuntu
 ExecStart=/home/ubuntu/env/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
@@ -39,7 +39,7 @@ echo "server {
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
-        root /home/ubuntu/;
+        root /home/ubuntu;
     }
 
     location / {
