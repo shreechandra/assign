@@ -26,7 +26,7 @@ ExecStart=/home/ubuntu/env/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
           --bind unix:/run/gunicorn.sock \
-          textutils.wsgi:application
+          assigndjnago.wsgi:application
 
 [Install]
 WantedBy=multi-user.target" 
