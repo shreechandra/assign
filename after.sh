@@ -10,8 +10,7 @@ Description=gunicorn socket
 ListenStream=/run/gunicorn.sock
 
 [Install]
-WantedBy=sockets.target
-" > /etc/systemd/system/gunicorn.socket
+WantedBy=sockets.target" > /etc/systemd/system/gunicorn.socket
 
 echo " [Unit]
 Description=gunicorn daemon
@@ -29,10 +28,11 @@ ExecStart=/home/ubuntu/env/bin/gunicorn \
           assigndjnago.wsgi:application
 
 [Install]
-WantedBy=multi-user.target" 
->  /etc/systemd/system/gunicorn.service
+WantedBy=multi-user.target" >  /etc/systemd/system/gunicorn.service
+
 sudo systemctl start gunicorn.socket
 sudo systemctl enable gunicorn.socket
+
 echo "server {
     listen 80;
     server_name 13.233.190.179;
@@ -46,9 +46,10 @@ echo "server {
         include proxy_params;
         proxy_pass http://unix:/run/gunicorn.sock;
     }
-}"
-> /etc/nginx/sites-available/textutils
+}" > /etc/nginx/sites-available/textutils
+
 sudo ln -s /etc/nginx/sites-available/textutils /etc/nginx/sites-enabled/
 sudo rm /etc/nginx//sites-enabled/default
+
 sudo systemctl restart nginx
 sudo systemctl restart gunicorn
