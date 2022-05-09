@@ -3,6 +3,7 @@
 deactivate
 
 
+echo"[Unit] 
 Description=gunicorn socket
 
 [Socket]
@@ -11,6 +12,7 @@ ListenStream=/run/gunicorn.sock
 [Install]
 WantedBy=sockets.target
 " > /etc/systemd/system/gunicorn.socket
+
 echo " [Unit]
 Description=gunicorn daemon
 Requires=gunicorn.socket
@@ -24,7 +26,7 @@ ExecStart=/home/ubuntu/env/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
           --bind unix:/run/gunicorn.sock \
-          first.wsgi:application
+          textutils.wsgi:application
 
 [Install]
 WantedBy=multi-user.target" 
