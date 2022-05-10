@@ -3,7 +3,7 @@
 deactivate
 
 
-echo"[Unit] 
+echo " [Unit] 
 Description=gunicorn socket
 
 [Socket]
